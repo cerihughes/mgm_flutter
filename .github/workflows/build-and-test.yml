@@ -7,6 +7,10 @@ jobs:
     runs-on: macos-latest
 
     steps:
+      # Install dependencies
+      - run: brew install openapi-generator || true
+      - run: brew outdated openapi-generator || brew upgrade openapi-generator
+
       # Checkout
       - uses: actions/checkout@v1
         with:
