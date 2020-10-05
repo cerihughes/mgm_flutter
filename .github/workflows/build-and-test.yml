@@ -1,0 +1,31 @@
+name: Build and test
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      # Install dependencies
+      - run: brew install openapi-generator || true
+      - run: brew outdated openapi-generator || brew upgrade openapi-generator
+
+      # Checkout
+      - uses: actions/checkout@v1
+        with:
+          submodules: recursive
+
+      # Setup Flutter
+      - uses: subosito/flutter-action@v1
+        with:
+          flutter-version: '1.22.0'
+          channel: 'stable'
+
+      # Build and test
+      - run: /bin/sh prepare.sh
+      - run: flutter pub get
+      - run: flutter analyze
+      - run: flutter test --coverage
+      - name: Codecov
+        uses: codecov/codecov-action@v1.0.13
