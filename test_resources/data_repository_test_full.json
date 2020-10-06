@@ -1,0 +1,51 @@
+[
+  {
+  "number" : 78,
+  "date" : "24/09/2020",
+  "location" : {
+    "name" : "#StayAtHome",
+    "latitude" : 1.234,
+    "longitude" : 5.678
+  },
+  "classicAlbum" : {
+    "type" : "classic",
+    "spotifyId" : "classicId",
+    "name" : "Classic Album",
+    "artist" : "Classic Artist",
+    "score" : 7.9,
+    "images" : [ {
+      "size" : 640,
+      "url" : "https://i.scdn.co/image/classic_640"
+    }, {
+      "size" : 300,
+      "url" : "https://i.scdn.co/image/classic_300"
+    } ]
+  },
+  "newAlbum" : {
+    "type" : "new",
+    "spotifyId" : "newId",
+    "name" : "New Album",
+    "artist" : "New Artist",
+    "score" : 6.2,
+    "images" : [ {
+      "size" : 640,
+      "url" : "https://i.scdn.co/image/new_640"
+    }, {
+      "size" : 300,
+      "url" : "https://i.scdn.co/image/new_300"
+    } ]
+  },
+  "playlist" : {
+    "spotifyId" : "playlistId",
+    "name" : "Playlist Name",
+    "owner" : "Playlist Owner",
+    "images" : [ {
+      "size" : 640,
+      "url" : "https://mosaic.scdn.co/640"
+    }, {
+      "size" : 300,
+      "url" : "https://mosaic.scdn.co/300"
+    } ]
+  }
+}
+]
