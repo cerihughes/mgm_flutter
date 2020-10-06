@@ -8,7 +8,7 @@ class DataRepository {
   DataRepository(this._remoteDataSource);
 
   Future<List<Event>> loadEventData() async {
-    var apiModels = await _remoteDataSource.loadEventData();
-    return apiModels.map((event) => event.convert()).toList();
+    return _remoteDataSource.loadEventData().then(
+        (apiModels) => apiModels.map((event) => event.convert()).toList());
   }
 }

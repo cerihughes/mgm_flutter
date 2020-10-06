@@ -1,12 +1,15 @@
+import 'package:intl/intl.dart';
 import 'package:openapi/api.dart';
 import 'model.dart';
 
 extension EventConversion on EventApiModel {
+  static final DateFormat _formatter = DateFormat('dd/MM/yyyy');
+
   Event convert() {
     return Event(
         number,
         location?.convert(),
-        DateTime.parse(date),
+        _formatter.parse(date),
         playlist?.convert(),
         classicAlbum?.convert(number),
         newAlbum?.convert(number));
