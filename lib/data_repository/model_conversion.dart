@@ -43,7 +43,7 @@ extension PlaylistConversion on PlaylistApiModel {
 }
 
 extension ImageConversion on ImageApiModel {
-  Image convert() {
-    return Image(size, url);
+  AlbumArt convert() {
+    return AlbumArt(size, url);
   }
 }

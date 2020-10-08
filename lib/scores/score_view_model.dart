@@ -1,19 +1,16 @@
+import 'package:mgm_flutter/album_art_view_model.dart';
 import 'package:mgm_flutter/data_repository/model.dart';
 
-class ScoreViewModel {
+class ScoreViewModel extends AlbumArtViewModel {
   final Album _album;
   final int _index;
   final _Award _award;
 
   final String position;
 
-  // String get albumName;
-  // String get artistName;
-  // String get rating;
-  // String get position;
-
   ScoreViewModel(this._album, this._index, this.position)
-      : _award = _createAward(_album.score ?? 0.0);
+      : _award = _createAward(_album.score ?? 0.0),
+        super(_album.images);
 
   String get albumName {
     return _album.name;

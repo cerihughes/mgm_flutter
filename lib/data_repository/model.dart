@@ -48,7 +48,7 @@ class Album extends Equatable {
   final String name;
   final String artist;
   final double? score;
-  final List<Image>? images;
+  final List<AlbumArt>? images;
 
   Album(this.eventNumber, this.type, this.spotifyId, this.name, this.artist,
       this.score, this.images);
@@ -69,7 +69,7 @@ class Playlist extends Equatable {
   final String spotifyId;
   final String name;
   final String owner;
-  final List<Image>? images;
+  final List<AlbumArt>? images;
 
   Playlist(this.spotifyId, this.name, this.owner, this.images);
 
@@ -77,11 +77,11 @@ class Playlist extends Equatable {
   List<Object> get props => [spotifyId, name, owner, unwrap(images)];
 }
 
-class Image extends Equatable {
+class AlbumArt extends Equatable {
   final int size;
   final String url;
 
-  Image(this.size, this.url);
+  AlbumArt(this.size, this.url);
 
   @override
   List<Object> get props => [size, url];

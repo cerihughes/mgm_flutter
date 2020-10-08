@@ -38,24 +38,19 @@ class _ScoresPageState extends State<ScoresPage> {
     return ListView.builder(
         itemCount: viewModels.length,
         itemBuilder: (context, index) {
-          return Card(
-              child: _tile(viewModels[index].albumName,
-                  viewModels[index].artistName, Icons.work));
+          return Card(child: _tile(viewModels[index]));
         });
   }
 
-  ListTile _tile(String title, String subtitle, IconData icon) {
+  ListTile _tile(ScoreViewModel viewModel) {
     return ListTile(
-      title: Text(title,
+      title: Text(viewModel.albumName,
           style: TextStyle(
             fontWeight: FontWeight.w500,
             fontSize: 20,
           )),
-      subtitle: Text(subtitle),
-      leading: Icon(
-        icon,
-        color: Colors.blue[500],
-      ),
+      subtitle: Text(viewModel.artistName),
+      leading: Image.network(viewModel.imageUrl(300)),
     );
   }
 
