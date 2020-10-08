@@ -59,7 +59,7 @@ class _ScoresPageState extends State<ScoresPage> {
           overflow: TextOverflow.ellipsis),
       leading: Image.network(viewModel.imageUrl(300) ??
           "https://mgm-gcp.appspot.com/fallback.jpg"),
-      trailing: Icon(Icons.work),
+      trailing: Image(image: viewModel.awardImage),
     );
   }
 }

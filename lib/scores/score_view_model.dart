@@ -1,3 +1,4 @@
+import 'package:flutter/painting.dart';
 import 'package:mgm_flutter/album_art_view_model.dart';
 import 'package:mgm_flutter/data_repository/model.dart';
 
@@ -31,11 +32,11 @@ class ScoreViewModel extends AlbumArtViewModel {
 // var ratingFontColor: UIColor {
 // return award.ratingFontColor
 // }
-//
-// var awardImage: UIImage? {
-// return award.awardImage
-// }
-//
+
+  AssetImage get awardImage {
+    return _award.awardImage;
+  }
+
 // var spotifyURL: URL? {
 // guard let spotifyID = album.spotifyId else {
 // return nil
@@ -47,18 +48,18 @@ class ScoreViewModel extends AlbumArtViewModel {
 enum _Award { gold, silver, bronze, none }
 
 extension _AwardBehaviour on _Award {
-  // var awardImage: UIImage? {
-  // switch self {
-  // case .gold:
-  // return UIImage(named: "gold")
-  // case .silver:
-  // return UIImage(named: "silver")
-  // case .bronze:
-  // return UIImage(named: "plate")
-  // default:
-  // return UIImage(named: "none")
-  // }
-  // }
+  AssetImage get awardImage {
+    switch (this) {
+      case _Award.gold:
+        return AssetImage('assets/gold.png');
+      case _Award.silver:
+        return AssetImage('assets/silver.png');
+      case _Award.bronze:
+        return AssetImage('assets/plate.png');
+      default:
+        return AssetImage('assets/none.png');
+    }
+  }
 
   // var ratingFontColor: UIColor {
   // switch self {
