@@ -47,19 +47,43 @@ class _ScoresPageState extends State<ScoresPage> {
     );
   }
 
-  ListTile _tile(ScoreViewModel viewModel) {
-    return ListTile(
-      title: Text(viewModel.albumName,
-          style: TextStyle(fontSize: 14),
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis),
-      subtitle: Text(viewModel.artistName,
-          style: TextStyle(fontSize: 14, fontStyle: FontStyle.italic),
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis),
-      leading: Image.network(viewModel.imageUrl(300) ??
-          "https://mgm-gcp.appspot.com/fallback.jpg"),
-      trailing: Image(image: viewModel.awardImage),
-    );
+  Widget _tile(ScoreViewModel viewModel) {
+    return Row(crossAxisAlignment: CrossAxisAlignment.start, children: <Widget>[
+      Image.network(
+          viewModel.imageUrl(300) ?? "https://mgm-gcp.appspot.com/fallback.jpg",
+          height: 60),
+      Expanded(
+          child: Column(
+        children: <Widget>[
+          Text(viewModel.albumName,
+              style: TextStyle(fontSize: 14),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis),
+          Text(viewModel.artistName,
+              style: TextStyle(fontSize: 14, fontStyle: FontStyle.italic),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis),
+        ],
+      )),
+      Stack(alignment: AlignmentDirectional.topCenter, children: <Widget>[
+        Image(image: viewModel.awardImage, height: 58),
+        Column(children: <Widget>[
+          Text(
+            viewModel.position,
+            style: TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+                fontSize: 14.0),
+          ),
+          Text(
+            viewModel.rating,
+            style: TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+                fontSize: 19.0),
+          )
+        ])
+      ]),
+    ]);
   }
 }
