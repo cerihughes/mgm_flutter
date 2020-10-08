@@ -25,20 +25,20 @@ void main() {
         'Classic Album',
         'Classic Artist',
         7.9, [
-      Image(640, 'https://i.scdn.co/image/classic_640'),
-      Image(300, 'https://i.scdn.co/image/classic_300')
+      AlbumArt(640, 'https://i.scdn.co/image/classic_640'),
+      AlbumArt(300, 'https://i.scdn.co/image/classic_300')
     ]);
 
     final expectedNewAlbum = Album(expectedEventNumber, AlbumType.new_album,
         'newId', 'New Album', 'New Artist', 6.2, [
-      Image(640, 'https://i.scdn.co/image/new_640'),
-      Image(300, 'https://i.scdn.co/image/new_300')
+      AlbumArt(640, 'https://i.scdn.co/image/new_640'),
+      AlbumArt(300, 'https://i.scdn.co/image/new_300')
     ]);
 
     final expectedPlaylist =
         Playlist('playlistId', 'Playlist Name', 'Playlist Owner', [
-      Image(640, 'https://mosaic.scdn.co/640'),
-      Image(300, 'https://mosaic.scdn.co/300')
+      AlbumArt(640, 'https://mosaic.scdn.co/640'),
+      AlbumArt(300, 'https://mosaic.scdn.co/300')
     ]);
 
     final expectedLocation = Location('#StayAtHome', 1.234, 5.678);
