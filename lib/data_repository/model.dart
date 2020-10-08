@@ -8,7 +8,7 @@ extension NullSupport on Equatable {
 
 class Event extends Equatable {
   final int number;
-  final Location? location;
+  final Location location;
   final DateTime? date;
   final Playlist? playlist;
   final Album? classicAlbum;
@@ -20,7 +20,7 @@ class Event extends Equatable {
   @override
   List<Object> get props => [
         number,
-        unwrap(location),
+        location,
         unwrap(date),
         unwrap(playlist),
         unwrap(classicAlbum),
@@ -45,9 +45,9 @@ class Album extends Equatable {
   final int eventNumber;
   final AlbumType type;
   final String? spotifyId;
-  final String? name;
-  final String? artist;
-  final double score;
+  final String name;
+  final String artist;
+  final double? score;
   final List<Image>? images;
 
   Album(this.eventNumber, this.type, this.spotifyId, this.name, this.artist,
@@ -58,9 +58,9 @@ class Album extends Equatable {
         eventNumber,
         type,
         unwrap(spotifyId),
-        unwrap(name),
-        unwrap(artist),
-        score,
+        name,
+        artist,
+        unwrap(score),
         unwrap(images)
       ];
 }
@@ -78,11 +78,11 @@ class Playlist extends Equatable {
 }
 
 class Image extends Equatable {
-  final int? size;
+  final int size;
   final String url;
 
   Image(this.size, this.url);
 
   @override
-  List<Object> get props => [unwrap(size), url];
+  List<Object> get props => [size, url];
 }

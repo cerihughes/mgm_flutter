@@ -8,8 +8,8 @@ extension EventConversion on EventApiModel {
   Event convert() {
     return Event(
         number,
-        location?.convert(),
-        _formatter.parse(date),
+        location.convert(),
+        date != null ? _formatter.parse(date) : null,
         playlist?.convert(),
         classicAlbum?.convert(number),
         newAlbum?.convert(number));
