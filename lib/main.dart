@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:mgm_flutter/data_repository/data_repository.dart';
+import 'package:mgm_flutter/data_repository/remote_data_source.dart';
+import 'package:mgm_flutter/scores/scores_view_model.dart';
 
 import 'scores/scores.dart';
 
@@ -11,24 +14,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Music Geek Monthly',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
         primarySwatch: Colors.blue,
-        // This makes the visual density adapt to the platform that you run
-        // the app on. For desktop platforms, the controls will be smaller and
-        // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: ScoresPage(ScoresViewModel(
+          DataRepository(RemoteDataSource('https://mgm-gcp.appspot.com')))),
     );
   }
 }
