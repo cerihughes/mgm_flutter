@@ -50,7 +50,8 @@ class _ScoresPageState extends State<ScoresPage> {
             fontSize: 20,
           )),
       subtitle: Text(viewModel.artistName),
-      leading: Image.network(viewModel.imageUrl(300)),
+      leading: Image.network(viewModel.imageUrl(300) ??
+          "https://mgm-gcp.appspot.com/fallback.jpg"),
     );
   }
 
