@@ -29,9 +29,9 @@ class ScoreViewModel extends AlbumArtViewModel {
     return score.toStringAsFixed(1);
   }
 
-// var ratingFontColor: UIColor {
-// return award.ratingFontColor
-// }
+  Color get ratingFontColor {
+    return _award.ratingFontColor;
+  }
 
   AssetImage get awardImage {
     return _award.awardImage;
@@ -48,6 +48,11 @@ class ScoreViewModel extends AlbumArtViewModel {
 enum _Award { gold, silver, bronze, none }
 
 extension _AwardBehaviour on _Award {
+  static const Color _awardGold = Color.fromARGB(255, 238, 187, 100);
+  static const Color _awardSilver = Color.fromARGB(255, 180, 180, 185);
+  static const Color _awardBronze = Color.fromARGB(255, 217, 162, 129);
+  static const Color _awardNone = Color.fromARGB(255, 55, 106, 77);
+
   AssetImage get awardImage {
     switch (this) {
       case _Award.gold:
@@ -61,18 +66,18 @@ extension _AwardBehaviour on _Award {
     }
   }
 
-  // var ratingFontColor: UIColor {
-  // switch self {
-  // case .gold:
-  // return .goldCup
-  // case .silver:
-  // return .silverCup
-  // case .bronze:
-  // return .bronzeCup
-  // default:
-  // return .greenCup
-  // }
-  // }
+  Color get ratingFontColor {
+    switch (this) {
+      case _Award.gold:
+        return _awardGold;
+      case _Award.silver:
+        return _awardSilver;
+      case _Award.bronze:
+        return _awardBronze;
+      default:
+        return _awardNone;
+    }
+  }
 }
 
 _Award _createAward(double score) {

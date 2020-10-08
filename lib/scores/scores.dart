@@ -48,12 +48,13 @@ class _ScoresPageState extends State<ScoresPage> {
   }
 
   Widget _tile(ScoreViewModel viewModel) {
-    return Row(crossAxisAlignment: CrossAxisAlignment.start, children: <Widget>[
+    return Row(children: <Widget>[
       Image.network(
           viewModel.imageUrl(300) ?? "https://mgm-gcp.appspot.com/fallback.jpg",
           height: 60),
       Expanded(
           child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Text(viewModel.albumName,
               style: TextStyle(fontSize: 14),
@@ -78,7 +79,7 @@ class _ScoresPageState extends State<ScoresPage> {
           Text(
             viewModel.rating,
             style: TextStyle(
-                color: Colors.black,
+                color: viewModel.ratingFontColor,
                 fontWeight: FontWeight.bold,
                 fontSize: 19.0),
           )
