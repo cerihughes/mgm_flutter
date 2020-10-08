@@ -36,7 +36,7 @@ class _ScoresPageState extends State<ScoresPage> {
           List<ScoreViewModel> viewModels = snapshot.data;
           return ListView.separated(
               separatorBuilder: (context, index) =>
-                  Divider(color: Colors.black),
+                  Divider(height: 8, color: Colors.grey[400]),
               itemCount: viewModels.length,
               itemBuilder: (context, index) => _tile(viewModels[index]));
         } else if (snapshot.hasError) {
@@ -49,9 +49,17 @@ class _ScoresPageState extends State<ScoresPage> {
 
   Widget _tile(ScoreViewModel viewModel) {
     return Row(children: <Widget>[
-      Image.network(
-          viewModel.imageUrl(300) ?? "https://mgm-gcp.appspot.com/fallback.jpg",
-          height: 60),
+      SizedBox(width: 10),
+      Container(
+        height: 64,
+        width: 64,
+        decoration: BoxDecoration(
+          border: Border.all(width: 1),
+        ),
+        child: Image.network(viewModel.imageUrl(60) ??
+            "https://mgm-gcp.appspot.com/fallback.jpg"),
+      ),
+      SizedBox(width: 4),
       Expanded(
           child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -66,6 +74,7 @@ class _ScoresPageState extends State<ScoresPage> {
               overflow: TextOverflow.ellipsis),
         ],
       )),
+      SizedBox(width: 4),
       Stack(alignment: AlignmentDirectional.topCenter, children: <Widget>[
         Image(image: viewModel.awardImage, height: 58),
         Column(children: <Widget>[
@@ -85,6 +94,7 @@ class _ScoresPageState extends State<ScoresPage> {
           )
         ])
       ]),
+      SizedBox(width: 10),
     ]);
   }
 }
