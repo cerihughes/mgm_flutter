@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
-import 'package:mgm_flutter/data_repository/model.dart';
 import 'package:mgm_flutter/scores/score_view_model.dart';
-import 'scores_view_model.dart';
+import 'package:mgm_flutter/scores/scores_view_model.dart';
 
 class ScoresPage extends StatefulWidget {
   ScoresViewModel viewModel;
@@ -34,11 +34,11 @@ class _ScoresPageState extends State<ScoresPage> {
           (BuildContext context, AsyncSnapshot<List<ScoreViewModel>> snapshot) {
         if (snapshot.hasData) {
           List<ScoreViewModel> viewModels = snapshot.data;
-          return ListView.builder(
+          return ListView.separated(
+              separatorBuilder: (context, index) =>
+                  Divider(color: Colors.black),
               itemCount: viewModels.length,
-              itemBuilder: (context, index) {
-                return Card(child: _tile(viewModels[index]));
-              });
+              itemBuilder: (context, index) => _tile(viewModels[index]));
         } else if (snapshot.hasError) {
           return Text("${snapshot.error}");
         }
@@ -50,13 +50,16 @@ class _ScoresPageState extends State<ScoresPage> {
   ListTile _tile(ScoreViewModel viewModel) {
     return ListTile(
       title: Text(viewModel.albumName,
-          style: TextStyle(
-            fontWeight: FontWeight.w500,
-            fontSize: 20,
-          )),
-      subtitle: Text(viewModel.artistName),
+          style: TextStyle(fontSize: 14),
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis),
+      subtitle: Text(viewModel.artistName,
+          style: TextStyle(fontSize: 14, fontStyle: FontStyle.italic),
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis),
       leading: Image.network(viewModel.imageUrl(300) ??
           "https://mgm-gcp.appspot.com/fallback.jpg"),
+      trailing: Icon(Icons.work),
     );
   }
 }
