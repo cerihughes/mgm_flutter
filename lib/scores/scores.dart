@@ -3,6 +3,7 @@ import 'package:flutter/rendering.dart';
 
 import 'package:mgm_flutter/scores/score_view_model.dart';
 import 'package:mgm_flutter/scores/scores_view_model.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ScoresPage extends StatefulWidget {
   final ScoresViewModel viewModel;
@@ -14,7 +15,7 @@ class ScoresPage extends StatefulWidget {
 }
 
 class _ScoresPageState extends State<ScoresPage> {
-  ScoresViewModel viewModel;
+  final ScoresViewModel viewModel;
 
   _ScoresPageState(this.viewModel);
 
@@ -38,12 +39,28 @@ class _ScoresPageState extends State<ScoresPage> {
               separatorBuilder: (context, index) =>
                   Divider(height: 8, color: Colors.grey[400]),
               itemCount: viewModels.length,
-              itemBuilder: (context, index) => _tile(viewModels[index]));
+              itemBuilder: (context, index) =>
+                  _tappableTile(viewModels[index]));
         } else if (snapshot.hasError) {
           return Text("${snapshot.error}");
         }
         return CircularProgressIndicator();
       },
+    );
+  }
+
+  Widget _tappableTile(ScoreViewModel viewModel) {
+    return GestureDetector(
+      behavior: HitTestBehavior.translucent,
+      onTap: () async {
+        final url = viewModel.spotifyUrl;
+        if (url != null) {
+          if (await canLaunch(url)) {
+            await launch(url);
+          }
+        }
+      },
+      child: _tile(viewModel),
     );
   }
 

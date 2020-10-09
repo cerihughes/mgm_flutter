@@ -12,13 +12,11 @@ class ScoreViewModel extends AlbumArtViewModel {
       : _award = _createAward(_album.score ?? 0.0),
         super(_album.images);
 
-  String get albumName {
-    return _album.name;
-  }
-
-  String get artistName {
-    return _album.artist;
-  }
+  String get albumName => _album.name;
+  String get artistName => _album.artist;
+  Color get ratingFontColor => _award.ratingFontColor;
+  AssetImage get awardImage => _award.awardImage;
+  String? get spotifyUrl => _album.spotifyId?.createSpotifyAlbumURL();
 
   String get rating {
     final score = _album.score;
@@ -27,21 +25,6 @@ class ScoreViewModel extends AlbumArtViewModel {
     }
     return score.toStringAsFixed(1);
   }
-
-  Color get ratingFontColor {
-    return _award.ratingFontColor;
-  }
-
-  AssetImage get awardImage {
-    return _award.awardImage;
-  }
-
-// var spotifyURL: URL? {
-// guard let spotifyID = album.spotifyId else {
-// return nil
-// }
-// return .createSpotifyAlbumURL(albumID: spotifyID)
-// }
 }
 
 enum _Award { gold, silver, bronze, none }
@@ -90,4 +73,10 @@ _Award _createAward(double score) {
     return _Award.bronze;
   }
   return _Award.none;
+}
+
+extension _UrlCreation on String {
+  String createSpotifyAlbumURL() {
+    return 'spotify:album:$this';
+  }
 }
