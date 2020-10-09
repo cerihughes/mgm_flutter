@@ -6,13 +6,12 @@ extension EventConversion on EventApiModel {
   static final DateFormat _formatter = DateFormat('dd/MM/yyyy');
 
   Event convert() {
-    return Event(
-        number,
-        location?.convert(),
-        _formatter.parse(date),
-        playlist?.convert(),
-        classicAlbum?.convert(number),
-        newAlbum?.convert(number));
+    DateTime? dateTime;
+    if (date != null) {
+      dateTime = _formatter.parse(date);
+    }
+    return Event(number, location.convert(), dateTime, playlist?.convert(),
+        classicAlbum?.convert(number), newAlbum?.convert(number));
   }
 }
 
@@ -43,7 +42,7 @@ extension PlaylistConversion on PlaylistApiModel {
 }
 
 extension ImageConversion on ImageApiModel {
-  Image convert() {
-    return Image(size, url);
+  AlbumArt convert() {
+    return AlbumArt(size, url);
   }
 }
