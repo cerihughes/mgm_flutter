@@ -3,8 +3,8 @@ import 'package:mgm_flutter/data_repository/model.dart';
 import 'score_view_model.dart';
 
 class ScoresViewModel {
-  String title = 'Flutter Demo Home Page';
-  Future<List<ScoreViewModel>> albums;
+  final String title = 'Flutter Demo Home Page';
+  final Future<List<ScoreViewModel>> albums;
 
   ScoresViewModel(DataRepository dataRepository)
       : albums = dataRepository

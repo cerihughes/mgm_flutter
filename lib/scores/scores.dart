@@ -14,7 +14,7 @@ class ScoresPage extends StatefulWidget {
 }
 
 class _ScoresPageState extends State<ScoresPage> {
-  ScoresViewModel viewModel;
+  final ScoresViewModel viewModel;
 
   _ScoresPageState(this.viewModel);
 
