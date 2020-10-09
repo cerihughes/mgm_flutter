@@ -10,7 +10,7 @@ class ScoreViewModel extends AlbumArtViewModel {
 
   ScoreViewModel(this._album, int index, this.position)
       : _award = _createAward(_album.score ?? 0.0),
-        super(_album.images, (index % 3) + 1);
+        super(_album.images);
 
   String get albumName {
     return _album.name;

@@ -4,12 +4,14 @@ import 'package:mgm_flutter/data_repository/model.dart';
 class AlbumArtViewModel {
   static final _fallback = 'https://mgm-gcp.appspot.com/fallback.jpg';
   final List<AlbumArt>? _images;
-  final int _loadingImageIndex;
+  static int _loadingImageIndex = 0;
 
-  AlbumArtViewModel(this._images, this._loadingImageIndex);
+  AlbumArtViewModel(this._images);
 
   AssetImage get loadingImage {
-    final imageName = "assets/album($_loadingImageIndex)";
+    final index = (_loadingImageIndex % 3) + 1;
+    _loadingImageIndex += 1;
+    final imageName = "assets/album$index.png";
     return AssetImage(imageName);
   }
 
@@ -24,7 +26,7 @@ class AlbumArtViewModel {
       if (image.size > largestDimension) {
         candidate = image.url;
       } else {
-        return candidate ?? image.url;
+        return candidate;
       }
     }
 
