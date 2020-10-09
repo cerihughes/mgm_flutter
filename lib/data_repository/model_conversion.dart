@@ -6,13 +6,12 @@ extension EventConversion on EventApiModel {
   static final DateFormat _formatter = DateFormat('dd/MM/yyyy');
 
   Event convert() {
-    return Event(
-        number,
-        location.convert(),
-        date != null ? _formatter.parse(date) : null,
-        playlist?.convert(),
-        classicAlbum?.convert(number),
-        newAlbum?.convert(number));
+    DateTime? dateTime;
+    if (date != null) {
+      dateTime = _formatter.parse(date);
+    }
+    return Event(number, location.convert(), dateTime, playlist?.convert(),
+        classicAlbum?.convert(number), newAlbum?.convert(number));
   }
 }
 
