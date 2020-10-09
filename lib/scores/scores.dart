@@ -51,14 +51,14 @@ class _ScoresPageState extends State<ScoresPage> {
     return Row(children: <Widget>[
       SizedBox(width: 10),
       Container(
-        height: 64,
-        width: 64,
-        decoration: BoxDecoration(
-          border: Border.all(width: 1),
-        ),
-        child: Image.network(viewModel.imageUrl(60) ??
-            "https://mgm-gcp.appspot.com/fallback.jpg"),
-      ),
+          height: 64,
+          width: 64,
+          decoration: BoxDecoration(
+            border: Border.all(width: 1),
+          ),
+          child: FadeInImage(
+              image: NetworkImage(viewModel.imageUrl(60)),
+              placeholder: viewModel.loadingImage)),
       SizedBox(width: 4),
       Expanded(
           child: Column(

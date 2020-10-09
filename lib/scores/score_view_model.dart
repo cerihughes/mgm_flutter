@@ -4,14 +4,13 @@ import 'package:mgm_flutter/data_repository/model.dart';
 
 class ScoreViewModel extends AlbumArtViewModel {
   final Album _album;
-  final int _index;
   final _Award _award;
 
   final String position;
 
-  ScoreViewModel(this._album, this._index, this.position)
+  ScoreViewModel(this._album, int index, this.position)
       : _award = _createAward(_album.score ?? 0.0),
-        super(_album.images);
+        super(_album.images, (index % 3) + 1);
 
   String get albumName {
     return _album.name;
