@@ -5,7 +5,7 @@ import 'package:mgm_flutter/scores/score_view_model.dart';
 import 'package:mgm_flutter/scores/scores_view_model.dart';
 
 class ScoresPage extends StatefulWidget {
-  ScoresViewModel viewModel;
+  final ScoresViewModel viewModel;
 
   ScoresPage(this.viewModel);
 

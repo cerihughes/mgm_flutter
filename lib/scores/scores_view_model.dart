@@ -23,10 +23,7 @@ class ScoresViewModel {
   }
 
   static List<Album> _sortedAlbums(List<Event> events) {
-    final albums = events
-        .expand((event) => event.scoredAlbums)
-        .where((element) => element != null)
-        .toList();
+    final albums = events.expand((event) => event.scoredAlbums).toList();
 
     albums.sort((a, b) => _sortScores(a, b));
     return albums;
