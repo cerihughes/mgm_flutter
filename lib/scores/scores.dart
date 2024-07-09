@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 
 import 'package:mgm_flutter/scores/score_view_model.dart';
 import 'package:mgm_flutter/scores/scores_view_model.dart';
@@ -33,8 +32,8 @@ class _ScoresPageState extends State<ScoresPage> {
       future: viewModel.albums,
       builder:
           (BuildContext context, AsyncSnapshot<List<ScoreViewModel>> snapshot) {
-        if (snapshot.hasData) {
-          List<ScoreViewModel> viewModels = snapshot.data;
+        List<ScoreViewModel>? viewModels = snapshot.data;
+        if (viewModels != null) {
           return ListView.separated(
               separatorBuilder: (context, index) =>
                   Divider(height: 8, color: Colors.grey[400]),
