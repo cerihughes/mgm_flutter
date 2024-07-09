@@ -16,7 +16,7 @@ class ScoreViewModel extends AlbumArtViewModel {
   String get artistName => _album.artist;
   Color get ratingFontColor => _award.ratingFontColor;
   AssetImage get awardImage => _award.awardImage;
-  String? get spotifyUrl => _album.spotifyId?.createSpotifyAlbumURL();
+  Uri? get spotifyUrl => _album.spotifyId?.createSpotifyAlbumURL();
 
   String get rating {
     final score = _album.score;
@@ -76,7 +76,7 @@ _Award _createAward(double score) {
 }
 
 extension _UrlCreation on String {
-  String createSpotifyAlbumURL() {
-    return 'spotify:album:$this';
+  Uri createSpotifyAlbumURL() {
+    return Uri.parse('spotify:album:$this');
   }
 }

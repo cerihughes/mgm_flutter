@@ -54,8 +54,8 @@ class _ScoresPageState extends State<ScoresPage> {
       onTap: () async {
         final url = viewModel.spotifyUrl;
         if (url != null) {
-          if (await canLaunch(url)) {
-            await launch(url);
+          if (await canLaunchUrl(url)) {
+            await launchUrl(url);
           }
         }
       },
