@@ -7,6 +7,7 @@ extension EventConversion on EventApiModel {
 
   Event convert() {
     DateTime? dateTime;
+    var date = this.date;
     if (date != null) {
       dateTime = _formatter.parse(date);
     }
@@ -21,9 +22,9 @@ extension LocationConversion on LocationApiModel {
   }
 }
 
-extension AlbumTypeConversion on String {
+extension AlbumTypeConversion on AlbumApiModelTypeEnum {
   AlbumType convert() {
-    return this == "classic" ? AlbumType.classic_album : AlbumType.new_album;
+    return this == AlbumApiModelTypeEnum.classic ? AlbumType.classic_album : AlbumType.new_album;
   }
 }
 

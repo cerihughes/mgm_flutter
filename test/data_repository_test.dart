@@ -14,7 +14,7 @@ void main() {
 
     final apiModels = _loadEventsJson(
         'test_resources/data_repository_test_full.json',
-        (json) => EventApiModel.fromJson(json));
+        (json) => EventApiModel.fromJson(json)!);
     remoteDataSource.loadEventDataResponse = apiModels;
 
     final expectedEventNumber = 78;

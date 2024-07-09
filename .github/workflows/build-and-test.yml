@@ -4,7 +4,7 @@ on: [push, pull_request]
 
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: macos-14
 
     steps:
       # Install dependencies
@@ -19,13 +19,13 @@ jobs:
       # Setup Flutter
       - uses: subosito/flutter-action@v1
         with:
-          flutter-version: '1.22.0'
+          flutter-version: '3.22.2'
           channel: 'stable'
 
       # Build and test
       - run: /bin/sh prepare.sh
       - run: flutter pub get
       - run: flutter analyze
-      - run: flutter test --enable-experiment=non-nullable --no-sound-null-safety --coverage
+      - run: flutter test --coverage
       - name: Codecov
         uses: codecov/codecov-action@v1.0.13

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:openapi/api.dart';
 
 class RemoteDataSource {
@@ -6,5 +8,5 @@ class RemoteDataSource {
   RemoteDataSource(String basePath)
       : _defaultApi = DefaultApi(ApiClient(basePath: basePath));
 
-  Future<List<EventApiModel>> loadEventData() async => _defaultApi.events();
+  Future<List<EventApiModel>> loadEventData() async => await _defaultApi.events() ?? [];
 }
